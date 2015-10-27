@@ -37,3 +37,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'carrierwave'
+
+# sudo apt-get install libmagickwand-dev
+
+gem 'rmagick', '~> 2.13.3'
