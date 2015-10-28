@@ -1,4 +1,5 @@
 <%= link_to "Back to all movies", movies_path %><br/>
+
 <%= image_tag @movie.image.url(:thumb).to_s %> 
 <h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, 
     <%= link_to "delete", movie_path(@movie), method: :delete, data: { confirm: "You sure?" } %>)</h2>

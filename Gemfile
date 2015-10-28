@@ -38,8 +38,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#for adding a photo to movie
 gem 'carrierwave'
 
-# sudo apt-get install libmagickwand-dev
+#used to complement carrierwave; sudo apt-get install libmagickwand-dev
 
 gem 'rmagick', '~> 2.13.3'
+
+#for pagination
+gem 'kaminari'

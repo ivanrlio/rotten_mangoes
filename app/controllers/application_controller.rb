@@ -17,13 +17,13 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_admin
-    if !(current_user == nil)
-      true
-    else
-      redirect_to new_session_path
-    end
+    redirect_to movies_path if !current_user.admin
   end
 
-  helper_method :current_user
+  def is_admin?
+    current_user.admin
+  end
+
+  helper_method :current_user, :is_admin?
 
 end
