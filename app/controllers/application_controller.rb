@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_user
+  def user_is_admin
+    redirect_to movies_path if !current_user.admin
+  end
+
+  def is_admin?
+    current_user.admin
+  end
+
+  helper_method :current_user, :is_admin?
 
 end

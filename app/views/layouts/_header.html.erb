@@ -1,0 +1,9 @@
+<header>
+  <small>
+    <% if !(current_user == nil) %>
+      <% if is_admin? %>
+        <%= link_to "Back to all users", admin_users_path %>
+      <% end %>
+    <% end %>
+  </small>
+</header>
