@@ -1,5 +1,31 @@
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
+<h1>Rotten Mangoes</h1><small><%= link_to "Submit a movie!", new_movie_path %></small>
+
+<%= form_tag(movies_path, method: "get") do %>
+  <div class="control-group">
+    <%= label_tag(:title, "Which movie?") %>
+    <div class="controls">
+      <%= text_field_tag(:title) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label_tag(:director, "Which director?") %>
+    <div class="controls">
+      <%= text_field_tag(:director) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label_tag(:runtime) %>
+    <div class="controls">
+      <%= select_tag(:runtime, options_for_select([['-', nil ],['< 90 min', 'short'], ['90-120 min', 'medium'], ['> 120 min', 'long']])) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= submit_tag("Search", name: nil) %>
+    </div>
+  </div>   
+<% end %>
+
 <hr>
 <% @movies.each do |movie| %>
   <%= image_tag movie.image.url(:thumb).to_s %>
@@ -8,5 +34,5 @@
   <h3><%= movie.release_date %></h3>
   <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
   <p><%= movie.description %></p>
-
 <% end %>
+
