@@ -1,6 +1,7 @@
 <h1> All users in the database </h1>
 
 <%= paginate @users %>
+
 <% @users.each do |user| %>
   <div>
     ID#<%= user.id %> | 
