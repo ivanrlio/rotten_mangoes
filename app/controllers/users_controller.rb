@@ -6,10 +6,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
- 
+  
     if @user.save
-      session[:user_id] = @user.id #auto login
-      redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
+      UserMailer.welcome_email(@user).deliver
+      session[:user_id] = @user.id 
+      redirect_to(movies_path, notice: "Welcome aboard, #{@user.firstname}!")
     else
       render :new
     end

@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_admin
-    redirect_to movies_path if !current_user.admin
+    if !current_user.admin
+      redirect_to movies_path, alert: "Access denied!"
+    end
   end
 
   def is_admin?
