@@ -42,7 +42,7 @@ class Admin::UsersController < UsersController
   
     if @user.destroy
       UserMailer.delete_email(user).deliver
-       redirect_to(admin_users_path, notice: "#{user.full_name} was successfully deleted.")
+      redirect_to(admin_users_path, notice: "#{user.full_name} was successfully deleted.")
     else
       redirect admin_users_path, alert: "User was NOT deleted or could not be found!"
     end
