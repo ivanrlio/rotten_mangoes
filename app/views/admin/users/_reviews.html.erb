@@ -1,0 +1,4 @@
+<% @user.reviews.each do |review| %>
+  <h2><%= Movie.find(review[:movie_id]).title %><small> (<%= review.rating_out_of_ten %>/10)</small></h2>
+  <p><%= review.text %></p>
+<% end %>
