@@ -3,12 +3,18 @@ class Admin::UsersController < UsersController
   before_filter :restrict_access
   before_filter :user_is_admin
 
+  # session[:admin_user_id] = current_user.id
+  # session[:user_id] = params[:user_id]
+  # redirect_to :root
+
+  # session[:user_id] = session[:admin_user_id]
+  # session[:admin_user_id] = nil
+
   def index
     @users = User.all.page(params[:page]).per(5)  
   end
 
   def create
-    binding.pry
     @user = User.new(user_params)
   
     if @user.save

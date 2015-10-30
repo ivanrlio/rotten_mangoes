@@ -12,10 +12,9 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
-  def review_average
-    reviews.sum(:rating_out_of_ten)/reviews.size
-  end
-
+  # scope :by_title,    -> (title) { where("title LIKE ?", "%#{title}%" ) if title.present? }
+  # scope :by_director, -> (director) { where("director LIKE ?", "%#{director}%" ) if director.present? }
+ 
   def self.search(title = nil, director = nil, runtime = nil)
    
     movie = Movie.all
@@ -30,6 +29,10 @@ class Movie < ActiveRecord::Base
               movie
             end
     movie
+  end
+
+  def review_average
+    reviews.sum(:rating_out_of_ten)/reviews.size
   end
 
   protected
